@@ -3,7 +3,20 @@
 Big Data project (Group 10). Kappa architecture:
 **Producer → Kafka → PySpark Structured Streaming → MinIO (Parquet) + Kafka cleaned topic → Embedding/Indexer → OpenSearch → Retrieval → LLM → API**.
 
-> Trạng thái: **Milestone 1 đang triển khai** — chưa có code chạy được. README này sẽ được TV1 cập nhật thành hướng dẫn setup khi các module được merge.
+> Trạng thái: **Milestone 1 đang triển khai.** Hiện chạy được: hạ tầng nền (Kafka, MinIO, OpenSearch). Producer, Spark job, indexer, API đang được các owner phát triển.
+
+## Chạy hạ tầng local
+
+Yêu cầu: Docker (Compose v2), `make`, Docker được cấp ≥ 2 GB RAM cho hạ tầng nền (≥ 6 GB khi chạy full stack).
+
+```bash
+cp .env.example .env
+make up      # Kafka :9092 · MinIO :9000 (console :9001) · OpenSearch :9200; tạo bucket streamrag-lake
+make ps
+make down    # giữ dữ liệu; `make reset` mới xóa volumes
+```
+
+`make help` liệt kê mọi lệnh. Các lệnh `init-topics`, `init-index`, `seed`, `simulate`, `smoke` hiện báo *not implemented* cho đến khi owner của chúng merge code. Vận hành và lỗi thường gặp: [docs/runbook.md](docs/runbook.md). Kiến trúc: [docs/architecture.md](docs/architecture.md).
 
 ## Bắt đầu từ đâu
 
