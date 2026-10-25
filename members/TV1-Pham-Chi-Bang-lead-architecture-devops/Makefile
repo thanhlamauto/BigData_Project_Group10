@@ -14,6 +14,7 @@ TEST_PATHS  = $(patsubst $(REPO_ROOT)/%,%,$(wildcard $(REPO_ROOT)/tests $(REPO_R
 INGEST_ARGS ?=
 # Use the same environment as Compose; command-line arguments can override defaults.
 INGEST_ENV = set -a; . <(sed 's/\r$$//' "$(ENV_FILE)"); set +a;
+SMOKE_ARGS ?=
 
 define not_implemented
 	@echo "make $@: not implemented yet (owner: $(1))" >&2; exit 1
@@ -87,4 +88,4 @@ test: ## Run unit tests (whole repo)
 	cd $(REPO_ROOT) && $(PYTHON) -m pytest -c $(CURDIR)/pyproject.toml --rootdir . $(TEST_PATHS)
 
 smoke: ## End-to-end PASS/FAIL check (owner: TV5)
-	$(call not_implemented,TV5 Nguyen Ngoc Minh)
+	$(PYTHON) ../TV5-Nguyen-Ngoc-Minh-rag-api-llm-tests/scripts/smoke_test.py $(SMOKE_ARGS)

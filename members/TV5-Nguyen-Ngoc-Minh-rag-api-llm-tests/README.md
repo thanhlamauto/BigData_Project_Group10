@@ -3,6 +3,14 @@
 > Người phụ trách: **Nguyen Ngoc Minh** (TV5) · Reviewer chéo của bạn: **TV4 (Kieu Son Tung)** · Bạn review: PR của **TV4 (Kieu Son Tung)**
 > Đọc trước: [plan](../../StreamRAG_Milestone_1_Plan.md) mục 1.2 (chú ý về LLM mock), 2.2, 6, **8D–8E**, **9**, 12 và [members/README.md](../README.md).
 
+## Code và cách chạy
+
+Code TV5 nằm trong folder này: `services/api/`, `scripts/`, `tests/`, `fixtures/`, `docs/`.
+Xem [hướng dẫn chạy API](services/api/README.md), [API contract](docs/api_contract.md)
+và [kết quả kiểm chứng / phần cần tích hợp](docs/validation.md).
+Các checkbox bên dưới giữ làm tiêu chí nghiệm thu của cả nhóm; có code/test offline
+không đồng nghĩa đã hoàn thành demo pipeline hoặc LLM thật.
+
 ## Vai trò
 
 Bạn làm **read path**: FastAPI nhận câu hỏi → encode query → top-k từ OpenSearch → ghép context → gọi LLM → trả `answer` + `sources`. Bạn cũng sở hữu **smoke test end-to-end** và đo **freshness** — bằng chứng "real-time" của cả nhóm.
