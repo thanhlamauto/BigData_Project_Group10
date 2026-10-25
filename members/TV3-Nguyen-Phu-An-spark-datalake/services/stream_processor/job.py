@@ -1,7 +1,7 @@
 """Spark Structured Streaming job: Kafka raw topic -> Bronze + Silver Parquet (M1.1 spike).
 
 Run with spark-submit (see README.md). Configuration comes from environment variables that
-match the TV1 `.env.example`. The cleaned topic sink is added in M1.2 (task M1-09).
+match the TV1 `.env.example`. Set CLEANED_TOPIC to enable the validated Kafka sink.
 
 Each micro-batch is handled in `foreachBatch`: one Kafka read and one checkpoint feed every
 sink, and the batch logs input/valid/invalid counts. A retried batch can write its files
@@ -99,6 +99,24 @@ def process_batch(cfg: Config, batch: DataFrame, batch_id: int) -> None:
             return
         write_parquet(bronze, f"{cfg.lake_root}/bronze/events")
         write_parquet(transforms.select_valid(checked), f"{cfg.lake_root}/silver/events")
+        cleaned_topic = os.environ.get("CLEANED_TOPIC")
+        if cleaned_topic:
+            # Both sinks are at-least-once; downstream external versioning absorbs replay.
+            valid = transforms.select_valid(checked).dropDuplicates(["event_id"])
+            payload = F.to_json(
+                F.struct(*[F.col(name) for name in valid.columns if name != "ingest_date"]),
+                options={
+                    "timestampFormat": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+                    "ignoreNullFields": "false",
+                },
+            )
+            (
+                valid.select(F.col("document_id").alias("key"), payload.alias("value"))
+                .write.format("kafka")
+                .option("kafka.bootstrap.servers", cfg.bootstrap_servers)
+                .option("topic", cleaned_topic)
+                .save()
+            )
         reasons = {}
         if invalid:
             rejected = transforms.select_rejected(checked)

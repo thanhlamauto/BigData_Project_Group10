@@ -3,7 +3,7 @@
 Big Data project (Group 10). Kappa architecture:
 **Producer → Kafka → PySpark Structured Streaming → MinIO (Parquet) + Kafka cleaned topic → Embedding/Indexer → OpenSearch → Retrieval → LLM → API**.
 
-> Trạng thái: **Milestone 1 đang triển khai.** Hiện chạy được: hạ tầng nền (Kafka, MinIO, OpenSearch). Producer, Spark job, indexer, API đang được các owner phát triển.
+> Nhánh tích hợp đã chạy producer → Kafka → Spark → MinIO + cleaned topic → MiniLM/indexer → OpenSearch → API, và có một demo LLM local thật. Milestone vẫn cần review độc lập và nghiệm thu trên máy khác. Hướng dẫn: [stack tích hợp](services/indexer/README.md).
 
 ## Chạy hạ tầng local
 
@@ -19,7 +19,7 @@ make ps
 make down    # giữ dữ liệu; `make reset` mới xóa volumes
 ```
 
-`make help` liệt kê mọi lệnh. Các lệnh `init-topics`, `init-index`, `seed`, `simulate`, `smoke` hiện báo *not implemented* cho đến khi owner của chúng merge code. Vận hành và lỗi thường gặp: [runbook](members/TV1-Pham-Chi-Bang-lead-architecture-devops/docs/runbook.md). Kiến trúc: [architecture](members/TV1-Pham-Chi-Bang-lead-architecture-devops/docs/architecture.md).
+`make help` liệt kê mọi lệnh. Các target `init-topics`, `init-index`, `seed`, `simulate`, `smoke` đã nối vào code Python; cần cài requirements của producer/indexer/API vào interpreter được chọn. Để chạy cả stack qua Docker, dùng `bash scripts/integration_stack.sh up` từ repo root và làm theo [hướng dẫn tích hợp](services/indexer/README.md). Vận hành: [runbook](members/TV1-Pham-Chi-Bang-lead-architecture-devops/docs/runbook.md). Kiến trúc: [architecture](members/TV1-Pham-Chi-Bang-lead-architecture-devops/docs/architecture.md).
 
 ## Bắt đầu từ đâu
 

@@ -27,6 +27,9 @@ jobs:
       - name: Install dev tools
         run: python -m pip install -r "$TV1_DIR/requirements/dev.txt"
 
+      - name: Install TV5 API dependencies
+        run: python -m pip install -r members/TV5-Nguyen-Ngoc-Minh-rag-api-llm-tests/requirements/runtime.txt
+
       - name: Lint
         run: python -m ruff check --config "$TV1_DIR/pyproject.toml" .
 
@@ -45,3 +48,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate Compose file
         run: docker compose --env-file "$TV1_DIR/.env.example" -f "$TV1_DIR/infra/compose.yaml" --profile init config --quiet
+      - name: Validate integrated stack
+        run: docker compose --project-directory . --env-file "$TV1_DIR/.env.example" -f "$TV1_DIR/infra/compose.yaml" -f infra/integration.compose.yaml --profile llm config --quiet

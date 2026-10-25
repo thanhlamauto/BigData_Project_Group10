@@ -1,0 +1,18 @@
+{
+  "answer": "Atlas Search maintenance starts at 21:30 UTC on October 27, 2026.",
+  "sources": [
+    {
+      "document_id": "inc-atlas-001",
+      "version": 2,
+      "title": "Atlas Search maintenance notice 001 live update",
+      "event_time": "2026-10-27T09:00:00Z",
+      "score": 0.93214756,
+      "source_url": null,
+      "ingested_at": "2026-10-25T18:04:45.102995Z",
+      "indexed_at": "2026-10-25T18:04:53.654028Z"
+    }
+  ],
+  "retrieval_ms": 183.425,
+  "llm_provider": "ollama",
+  "llm_ms": 8814.775
+}

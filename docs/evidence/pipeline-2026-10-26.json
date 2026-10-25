@@ -1,0 +1,219 @@
+{
+  "started_at": "2026-10-25T18:04:29.888218Z",
+  "status": "passed",
+  "checks": [
+    {
+      "document_id": "quasar-03c15ad996",
+      "version": 1,
+      "ingested_at": "2026-10-25T18:04:32.308737Z",
+      "first_visible_at": "2026-10-25T18:04:45.102995Z",
+      "freshness_seconds": 12.794,
+      "response": {
+        "answer": "[MOCK] Quasar Beacon 03c15ad996 status: accepted. Recovery completed at 23:47 UTC. [quasar-03c15ad996 v1]\nNotification Hub status at 09:15 UTC on 2026-10-31: operational. No customer impact is expected. [inc-notify-019 v1]\nNotification Hub status at 10:45 UTC on 2026-10-31: operational. No customer impact is expected. [inc-notify-039 v1]",
+        "sources": [
+          {
+            "document_id": "quasar-03c15ad996",
+            "version": 1,
+            "title": "Quasar Beacon 03c15ad996",
+            "event_time": "2026-10-25T18:04:32.308737Z",
+            "score": 0.9415218,
+            "source_url": null,
+            "ingested_at": "2026-10-25T18:04:32.308737Z",
+            "indexed_at": "2026-10-25T18:04:44.155238Z"
+          },
+          {
+            "document_id": "inc-notify-019",
+            "version": 1,
+            "title": "Notification Hub status notice 019",
+            "event_time": "2026-10-26T09:02:29Z",
+            "score": 0.7150104,
+            "source_url": null,
+            "ingested_at": "2026-10-25T17:59:09.890713Z",
+            "indexed_at": "2026-10-25T18:00:31.093587Z"
+          },
+          {
+            "document_id": "inc-notify-039",
+            "version": 1,
+            "title": "Notification Hub status notice 039",
+            "event_time": "2026-10-26T09:05:09Z",
+            "score": 0.71480656,
+            "source_url": null,
+            "ingested_at": "2026-10-25T17:59:09.901096Z",
+            "indexed_at": "2026-10-25T18:01:04.204350Z"
+          }
+        ],
+        "retrieval_ms": 63.717,
+        "llm_provider": "mock",
+        "llm_ms": 0.078
+      }
+    },
+    {
+      "document_id": "inc-atlas-001",
+      "version": 2,
+      "ingested_at": "2026-10-25T18:04:45.102995Z",
+      "first_visible_at": "2026-10-25T18:04:53.901840Z",
+      "freshness_seconds": 8.799,
+      "response": {
+        "answer": "[MOCK] Atlas Search maintenance starts at 21:30 UTC on 2026-10-27. Expected duration is 30 minutes. Status: scheduled. [inc-atlas-001 v2]\nJob Scheduler status at 17:15 UTC on 2026-10-29: operational. No customer impact is expected. [inc-scheduler-001 v1]\nData Gateway maintenance starts at 23:30 UTC on 2026-10-29. Expected duration is 30 minutes. Status: scheduled. [inc-gateway-001 v1]",
+        "sources": [
+          {
+            "document_id": "inc-atlas-001",
+            "version": 2,
+            "title": "Atlas Search maintenance notice 001 live update",
+            "event_time": "2026-10-27T09:00:00Z",
+            "score": 0.938107,
+            "source_url": null,
+            "ingested_at": "2026-10-25T18:04:45.102995Z",
+            "indexed_at": "2026-10-25T18:04:53.654028Z"
+          },
+          {
+            "document_id": "inc-scheduler-001",
+            "version": 1,
+            "title": "Job Scheduler status notice 001",
+            "event_time": "2026-10-26T09:00:07Z",
+            "score": 0.75953174,
+            "source_url": null,
+            "ingested_at": "2026-10-25T17:59:09.869345Z",
+            "indexed_at": "2026-10-25T18:00:48.675541Z"
+          },
+          {
+            "document_id": "inc-gateway-001",
+            "version": 1,
+            "title": "Data Gateway maintenance notice 001",
+            "event_time": "2026-10-26T09:00:02Z",
+            "score": 0.7571719,
+            "source_url": null,
+            "ingested_at": "2026-10-25T17:59:09.865331Z",
+            "indexed_at": "2026-10-25T18:00:17.855041Z"
+          }
+        ],
+        "retrieval_ms": 103.483,
+        "llm_provider": "mock",
+        "llm_ms": 0.074
+      }
+    },
+    {
+      "document_id": "barrier-03c15ad996",
+      "version": 1,
+      "ingested_at": "2026-10-25T18:04:53.963412Z",
+      "first_visible_at": "2026-10-25T18:05:03.939778Z",
+      "freshness_seconds": 9.976,
+      "response": {
+        "answer": "[MOCK] Progress Barrier 03c15ad996 accepted. [barrier-03c15ad996 v1]\nData Gateway is operational after recovery at 22:02 UTC on 2026-10-27. Status: resolved. Error rate is below 0.1 percent. [inc-gateway-001 v2]\nData Gateway maintenance starts at 19:45 UTC on 2026-10-27. Expected duration is 30 minutes. Status: scheduled. [inc-gateway-042 v1]",
+        "sources": [
+          {
+            "document_id": "barrier-03c15ad996",
+            "version": 1,
+            "title": "Progress Barrier 03c15ad996",
+            "event_time": "2026-10-25T18:04:32.308737Z",
+            "score": 0.94699514,
+            "source_url": null,
+            "ingested_at": "2026-10-25T18:04:53.963412Z",
+            "indexed_at": "2026-10-25T18:05:01.933017Z"
+          },
+          {
+            "document_id": "inc-gateway-001",
+            "version": 2,
+            "title": "Data Gateway maintenance notice 001 live update",
+            "event_time": "2026-10-27T09:02:00Z",
+            "score": 0.6927952,
+            "source_url": null,
+            "ingested_at": "2026-10-27T09:02:03Z",
+            "indexed_at": "2026-10-25T18:05:02.294959Z"
+          },
+          {
+            "document_id": "inc-gateway-042",
+            "version": 1,
+            "title": "Data Gateway maintenance notice 042",
+            "event_time": "2026-10-26T09:05:30Z",
+            "score": 0.6756777,
+            "source_url": null,
+            "ingested_at": "2026-10-25T17:59:09.916731Z",
+            "indexed_at": "2026-10-25T18:01:09.221372Z"
+          }
+        ],
+        "retrieval_ms": 55.051,
+        "llm_provider": "mock",
+        "llm_ms": 0.076
+      }
+    }
+  ],
+  "seed": {
+    "answer": "[MOCK] Atlas Search maintenance starts at 20:30 UTC on 2026-10-27. Expected duration is 30 minutes. Status: scheduled. [inc-atlas-001 v1]\nJob Scheduler status at 17:15 UTC on 2026-10-29: operational. No customer impact is expected. [inc-scheduler-001 v1]\nData Gateway maintenance starts at 23:30 UTC on 2026-10-29. Expected duration is 30 minutes. Status: scheduled. [inc-gateway-001 v1]",
+    "sources": [
+      {
+        "document_id": "inc-atlas-001",
+        "version": 1,
+        "title": "Atlas Search maintenance notice 001",
+        "event_time": "2026-10-26T09:00:00Z",
+        "score": 0.94985634,
+        "source_url": null,
+        "ingested_at": "2026-10-25T17:59:09.865331Z",
+        "indexed_at": "2026-10-25T18:01:10.475335Z"
+      },
+      {
+        "document_id": "inc-scheduler-001",
+        "version": 1,
+        "title": "Job Scheduler status notice 001",
+        "event_time": "2026-10-26T09:00:07Z",
+        "score": 0.75953174,
+        "source_url": null,
+        "ingested_at": "2026-10-25T17:59:09.869345Z",
+        "indexed_at": "2026-10-25T18:00:48.675541Z"
+      },
+      {
+        "document_id": "inc-gateway-001",
+        "version": 1,
+        "title": "Data Gateway maintenance notice 001",
+        "event_time": "2026-10-26T09:00:02Z",
+        "score": 0.7571719,
+        "source_url": null,
+        "ingested_at": "2026-10-25T17:59:09.865331Z",
+        "indexed_at": "2026-10-25T18:00:17.855041Z"
+      }
+    ],
+    "retrieval_ms": 103.116,
+    "llm_provider": "mock",
+    "llm_ms": 0.09
+  },
+  "index_count": 407,
+  "final": {
+    "answer": "[MOCK] Atlas Search maintenance starts at 20:30 UTC on 2026-10-27. Expected duration is 30 minutes. Status: scheduled. [late-000 v1]\nAtlas Search maintenance starts at 21:30 UTC on 2026-10-27. Expected duration is 30 minutes. Status: scheduled. [inc-atlas-001 v2]\nJob Scheduler status at 17:15 UTC on 2026-10-29: operational. No customer impact is expected. [inc-scheduler-001 v1]",
+    "sources": [
+      {
+        "document_id": "late-000",
+        "version": 1,
+        "title": "Atlas Search maintenance notice 001",
+        "event_time": "2026-10-20T09:00:00Z",
+        "score": 0.94985634,
+        "source_url": null,
+        "ingested_at": "2026-10-26T09:00:03Z",
+        "indexed_at": "2026-10-25T18:05:02.580914Z"
+      },
+      {
+        "document_id": "inc-atlas-001",
+        "version": 2,
+        "title": "Atlas Search maintenance notice 001 live update",
+        "event_time": "2026-10-27T09:00:00Z",
+        "score": 0.938107,
+        "source_url": null,
+        "ingested_at": "2026-10-25T18:04:45.102995Z",
+        "indexed_at": "2026-10-25T18:04:53.654028Z"
+      },
+      {
+        "document_id": "inc-scheduler-001",
+        "version": 1,
+        "title": "Job Scheduler status notice 001",
+        "event_time": "2026-10-26T09:00:07Z",
+        "score": 0.75953174,
+        "source_url": null,
+        "ingested_at": "2026-10-25T17:59:09.869345Z",
+        "indexed_at": "2026-10-25T18:00:48.675541Z"
+      }
+    ],
+    "retrieval_ms": 62.566,
+    "llm_provider": "mock",
+    "llm_ms": 0.081
+  },
+  "finished_at": "2026-10-25T18:05:04.398809Z"
+}
