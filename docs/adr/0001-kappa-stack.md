@@ -21,7 +21,7 @@
 | Broker | Apache Kafka, KRaft | `apache/kafka:3.9.1` |
 | Stream processing | PySpark Structured Streaming | TV3 pin (Spark 3.5.x + connector tương ứng) |
 | Object storage | MinIO (S3 API), Parquet | `pgsty/minio:RELEASE.2026-08-04T00-00-00Z` |
-| Bucket bootstrap | AWS CLI (S3 API) | `amazon/aws-cli:2.37.2` |
+| Bucket bootstrap | `mc` có sẵn trong cùng image MinIO | (như trên) |
 | Search / NoSQL + vector | OpenSearch | `opensearchproject/opensearch:2.19.4` |
 | Embedding | sentence-transformers (đề xuất all-MiniLM-L6-v2, dim 384) | TV4 pin |
 | API | FastAPI | TV5 pin |
