@@ -1,0 +1,1 @@
+{"bronze": 430, "reasons": {"empty_body": 1, "invalid_event_time": 1, "invalid_version": 1, "malformed_json": 1, "missing_document_id": 1}, "rejected": 5, "silver": 425, "storage": "s3a://streamrag-e2e-20261026"}

@@ -4,6 +4,7 @@ from types import SimpleNamespace
 
 import httpx
 import pytest
+
 from services.api.retrieval import (
     FakeRetriever,
     OpenSearchRetriever,

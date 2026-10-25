@@ -1,7 +1,10 @@
 # Stream processor (TV3 — Nguyen Phu An)
 
 PySpark Structured Streaming: đọc `streamrag.raw.v1` → validate/normalize → ghi **Bronze** + **Silver** Parquet lên MinIO (S3A).
-Trạng thái: **M1.1 xong** (transforms + unit test + spike Kafka → MinIO). Cleaned topic `streamrag.cleaned.v1` làm ở M1.2 (M1-09), dedup/watermark ở M1.4 (M1-10).
+Đã nối thêm cleaned Kafka sink khi có biến `CLEANED_TOPIC` (stack tích hợp đặt
+`streamrag.cleaned.v1`). Trong mỗi micro-batch, cleaned output dedup theo `event_id`;
+Silver vẫn giữ các replay. Global dedup/watermark chưa được triển khai. Xem
+[stack tích hợp](../../../../services/indexer/README.md) và `docs/evidence/` ở repo root.
 
 ## Version đã pin (kiểm tra thực tế trong image, 25/10/2026)
 
@@ -44,6 +47,7 @@ Chạy ngoài Makefile: `spark-submit --master 'local[*]' --driver-memory 1g job
 |---|---|---|
 | `KAFKA_BOOTSTRAP_SERVERS` | `localhost:9092` | Trong Compose dùng `kafka:29092` |
 | `RAW_TOPIC` | `streamrag.raw.v1` | |
+| `CLEANED_TOPIC` | không đặt | Khi đặt, phát valid JSON UTF-8 (UTC Z), key=document_id sau khi ghi lake |
 | `LAKE_ROOT` | `s3a://$LAKE_BUCKET` | Đặt path local (ví dụ `/tmp/lake`) để chạy không cần MinIO |
 | `CHECKPOINT_ROOT` | `$LAKE_ROOT/checkpoints` | Không commit checkpoint |
 | `MINIO_ENDPOINT`, `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY` | | Chỉ dùng khi path là `s3a://` |

@@ -1,5 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
+
 from services.api.config import Settings
 from services.api.llm import LLMError
 from services.api.main import create_app

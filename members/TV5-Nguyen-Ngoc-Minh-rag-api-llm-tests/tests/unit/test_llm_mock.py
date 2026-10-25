@@ -2,6 +2,7 @@ import json
 
 import httpx
 import pytest
+
 from services.api.llm import HTTPLLM, LLMError, MockLLM
 from services.api.prompt import SYSTEM_PROMPT, build_prompt
 

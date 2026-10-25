@@ -50,6 +50,7 @@ class HTTPLLM:
                 "system": SYSTEM_PROMPT,
                 "prompt": prompt,
                 "stream": False,
+                "options": {"temperature": 0, "num_predict": 256, "num_ctx": 2048},
             }
         else:
             endpoint = "/chat/completions"

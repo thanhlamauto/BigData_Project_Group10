@@ -48,3 +48,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate Compose file
         run: docker compose --env-file "$TV1_DIR/.env.example" -f "$TV1_DIR/infra/compose.yaml" --profile init config --quiet
+      - name: Validate integrated stack
+        run: docker compose --project-directory . --env-file "$TV1_DIR/.env.example" -f "$TV1_DIR/infra/compose.yaml" -f infra/integration.compose.yaml --profile llm config --quiet

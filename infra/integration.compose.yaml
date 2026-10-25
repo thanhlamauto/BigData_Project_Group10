@@ -1,0 +1,90 @@
+# Use with the TV1 base file and --project-directory set to the repository root.
+services:
+  spark:
+    image: streamrag-stream-processor:dev
+    build:
+      context: members/TV3-Nguyen-Phu-An-spark-datalake/services
+      dockerfile: stream_processor/Dockerfile
+    user: root
+    volumes:
+      - ./members/TV3-Nguyen-Phu-An-spark-datalake/services/stream_processor:/opt/streamrag/stream_processor:ro
+    cpus: 2
+    mem_limit: 1400m
+    networks: [default]
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      RAW_TOPIC: ${RAW_TOPIC:-streamrag.raw.v1}
+      CLEANED_TOPIC: ${CLEANED_TOPIC:-streamrag.cleaned.v1}
+      MINIO_ENDPOINT: http://minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-minioadmin}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-minioadmin}
+      LAKE_BUCKET: ${LAKE_BUCKET:-streamrag-lake}
+      CHECKPOINT_ROOT: ${CHECKPOINT_ROOT:-}
+      TRIGGER: 5 seconds
+      SHUFFLE_PARTITIONS: 2
+    command: ["/opt/spark/bin/spark-submit", "--master", "local[2]", "--driver-memory", "512m", "/opt/streamrag/stream_processor/job.py"]
+    depends_on:
+      kafka: {condition: service_healthy}
+      minio: {condition: service_healthy}
+  indexer:
+    image: streamrag-python:dev
+    build:
+      context: .
+      dockerfile: services/indexer/Dockerfile
+    mem_limit: 650m
+    cpus: 2
+    environment: &python_environment
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      CLEANED_TOPIC: ${CLEANED_TOPIC:-streamrag.cleaned.v1}
+      OPENSEARCH_URL: http://opensearch:9200
+      OPENSEARCH_INDEX: ${OPENSEARCH_INDEX:-streamrag-docs-v1}
+      EMBEDDING_MODEL: sentence-transformers/all-MiniLM-L6-v2
+      EMBEDDING_DIM: 384
+      EMBEDDING_CACHE: /models
+      INDEXER_GROUP: ${INDEXER_GROUP:-streamrag-indexer-v1}
+      RETRIEVER_BACKEND: opensearch
+      EMBEDDER_FACTORY: services.indexer.embedding:Embedder
+      LLM_PROVIDER: ${LLM_PROVIDER:-mock}
+      LLM_BASE_URL: ${LLM_INTERNAL_BASE_URL:-http://ollama:11434}
+      LLM_MODEL: ${LLM_MODEL:-qwen2.5:0.5b}
+      LLM_TIMEOUT_SECONDS: 120
+    volumes: [embedding-models:/models]
+    depends_on:
+      kafka: {condition: service_healthy}
+      opensearch: {condition: service_healthy}
+  api:
+    image: streamrag-python:dev
+    command: ["python", "-m", "uvicorn", "services.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment: *python_environment
+    mem_limit: 650m
+    cpus: 2
+    ports: ["${API_HOST_PORT:-8000}:8000"]
+    volumes: [embedding-models:/models]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      start_period: 120s
+      retries: 24
+    depends_on:
+      opensearch: {condition: service_healthy}
+  ollama:
+    image: ollama/ollama:0.6.8
+    profiles: [llm]
+    mem_limit: 1g
+    cpus: 2
+    environment:
+      OLLAMA_NUM_PARALLEL: 1
+      OLLAMA_MAX_LOADED_MODELS: 1
+      OLLAMA_CONTEXT_LENGTH: 2048
+    ports: ["11434:11434"]
+    volumes: [llm-models:/root/.ollama]
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 5s
+      start_period: 10s
+      retries: 12
+volumes:
+  embedding-models:
+  llm-models:

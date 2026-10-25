@@ -60,8 +60,8 @@ init-bucket: check-env ## Create the data lake bucket (idempotent)
 init-topics: check-env ## Create Kafka topics (owner: TV2)
 	$(INGEST_ENV) cd $(REPO_ROOT) && $(PYTHON) infra/kafka/init_topics.py $(INGEST_ARGS)
 
-init-index: ## Create the OpenSearch index (owner: TV4)
-	$(call not_implemented,TV4 Kieu Son Tung)
+init-index: check-env ## Create the OpenSearch index (owner: TV4)
+	$(INGEST_ENV) cd $(REPO_ROOT) && $(PYTHON) infra/opensearch/init_index.py
 
 # --- Data ----------------------------------------------------------------------
 
@@ -88,4 +88,4 @@ test: ## Run unit tests (whole repo)
 	cd $(REPO_ROOT) && $(PYTHON) -m pytest -c $(CURDIR)/pyproject.toml --rootdir . $(TEST_PATHS)
 
 smoke: ## End-to-end PASS/FAIL check (owner: TV5)
-	$(PYTHON) ../TV5-Nguyen-Ngoc-Minh-rag-api-llm-tests/scripts/smoke_test.py $(SMOKE_ARGS)
+	$(INGEST_ENV) cd $(REPO_ROOT) && $(PYTHON) scripts/verify_pipeline.py $(SMOKE_ARGS)

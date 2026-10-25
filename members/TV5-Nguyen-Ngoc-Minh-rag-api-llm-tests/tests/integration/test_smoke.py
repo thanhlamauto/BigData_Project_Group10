@@ -7,6 +7,7 @@ from types import SimpleNamespace
 import httpx
 import pytest
 from fastapi.testclient import TestClient
+
 from scripts import smoke_test as smoke
 from services.api.config import MODULE_ROOT, Settings
 from services.api.main import create_app

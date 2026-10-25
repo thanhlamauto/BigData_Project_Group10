@@ -107,13 +107,21 @@ class OpenSearchRetriever:
             vector = [float(value) for value in vectors[0]]
             if not all(math.isfinite(value) for value in vector) or not any(vector):
                 raise ValueError("Query vector must be finite and nonzero")
+            knn = {"vector": vector, "k": top_k}
+            # Honor explicit notice identifiers instead of blurring similar revisions.
+            notice = re.search(r"\bnotice\s+\d+\b", question, re.IGNORECASE)
+            document_id = re.search(r"\bdocument_id\s*[:=]\s*([a-zA-Z0-9_.-]+)", question)
+            if document_id:
+                knn["filter"] = {"term": {"document_id": document_id.group(1)}}
+            elif notice:
+                knn["filter"] = {"match_phrase": {"title": notice.group().lower()}}
             response = self.client.post(
                 self.search_url,
                 auth=self.auth,
                 json={
                     "size": top_k,
                     "_source": list(Document.model_fields.keys() - {"score"}),
-                    "query": {"knn": {self.vector_field: {"vector": vector, "k": top_k}}},
+                    "query": {"knn": {self.vector_field: knn}},
                 },
             )
             response.raise_for_status()
