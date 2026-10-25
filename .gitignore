@@ -1,1 +1,38 @@
+# OS / editors
 .DS_Store
+.idea/
+.vscode/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Runtime data: data lake, checkpoints, Spark output (never commit)
+data/lake/
+checkpoints/
+spark-warehouse/
+metastore_db/
+derby.log
+*.parquet
+*.crc
+
+# Model caches
+.cache/
+models/
+hf_cache/
+
+# Generated large datasets (commit the generator script, not the output)
+data/generated/
+
+# Logs / evidence scratch
+*.log
