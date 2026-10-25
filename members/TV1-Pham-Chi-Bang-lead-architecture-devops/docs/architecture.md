@@ -93,7 +93,7 @@ sequenceDiagram
     Spark->>Clean: cleaned event (processed_at)
     Clean->>Idx: consume
     Idx->>OS: upsert _id=inc-atlas-001, version=2 (indexed_at)
-    Note over OS: v1 bị thay thế; v1 tới muộn sẽ bị từ chối
+    Note over OS: v1 bị thay thế, v1 tới muộn sẽ bị từ chối
     User->>API: "What is the latest Atlas Search maintenance time?"
     API->>OS: kNN top-k
     OS-->>API: inc-atlas-001 v2
