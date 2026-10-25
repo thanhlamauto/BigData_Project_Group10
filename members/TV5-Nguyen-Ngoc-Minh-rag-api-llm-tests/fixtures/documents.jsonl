@@ -1,0 +1,3 @@
+{"document_id":"inc-atlas-001","version":1,"title":"Atlas Search maintenance","body":"Atlas Search maintenance starts at 20:30 UTC.","event_time":"2026-10-26T09:00:00Z","ingested_at":"2026-10-26T09:00:03Z","source_url":null}
+{"document_id":"inc-payment-001","version":1,"title":"Payment API status","body":"Payment API is operational. The incident has been resolved.","event_time":"2026-10-26T10:00:00Z","ingested_at":"2026-10-26T10:00:03Z","source_url":null}
+{"document_id":"inc-gateway-001","version":1,"title":"Data Gateway latency","body":"Data Gateway latency is elevated; engineers are investigating.","event_time":"2026-10-26T11:00:00Z","ingested_at":"2026-10-26T11:00:03Z","source_url":null}
