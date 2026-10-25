@@ -2,7 +2,8 @@
 
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+TV1_DIR = Path(__file__).resolve().parents[2]
+REPO_ROOT = TV1_DIR.parents[1]
 
 REQUIRED_ENV_KEYS = {
     "KAFKA_BOOTSTRAP_SERVERS",
@@ -25,7 +26,7 @@ REQUIRED_ENV_KEYS = {
 
 def read_env_example() -> dict[str, str]:
     values = {}
-    for line in (ROOT / ".env.example").read_text().splitlines():
+    for line in (TV1_DIR / ".env.example").read_text().splitlines():
         line = line.strip()
         if line and not line.startswith("#"):
             key, _, value = line.partition("=")
@@ -53,6 +54,6 @@ def test_topics_match_contract():
 
 
 def test_gitignore_excludes_local_env_and_runtime_data():
-    ignored = set((ROOT / ".gitignore").read_text().splitlines())
+    ignored = set((REPO_ROOT / ".gitignore").read_text().splitlines())
     for pattern in (".env", "data/lake/", "checkpoints/", "*.parquet"):
         assert pattern in ignored, f"{pattern} must be in .gitignore"

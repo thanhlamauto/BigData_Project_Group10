@@ -1,0 +1,14 @@
+# Shared tool configuration for the whole repo, passed explicitly with `--config` / `-c`
+# (see Makefile and .github/workflows/ci.yaml). Runtime dependencies are pinned per service;
+# dev tools are pinned in requirements/dev.txt next to this file.
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["data", "infra", "deploy"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"

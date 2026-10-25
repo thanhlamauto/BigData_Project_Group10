@@ -6,11 +6,15 @@
 
 - Docker Desktop (hoặc Docker Engine) với **Compose v2**, và `make`.
 - RAM cấp cho Docker: hạ tầng nền dùng khoảng **1,5 GB** (đo 25/10/2026: Kafka ~450 MiB, OpenSearch ~910 MiB, MinIO ~95 MiB). Full stack (Spark, embedding model, API) cần nhiều hơn: nên cấp **≥ 6 GB** trong Docker Desktop → Settings → Resources.
+- Chạy `make` trong folder TV1; ở gốc repo sẽ báo `No rule to make target`.
 - Port trống: `9092`, `9000`, `9001`, `9200` (đổi được trong `.env`: `*_HOST_PORT`).
 
 ## 2. Start / stop
 
+Mọi lệnh `make` chạy **trong folder TV1**:
+
 ```bash
+cd members/TV1-Pham-Chi-Bang-lead-architecture-devops
 cp .env.example .env     # lần đầu
 make up                  # khởi động, chờ healthy, tạo bucket streamrag-lake
 make ps                  # trạng thái
@@ -44,7 +48,7 @@ Kafka có 2 listener; dùng sai địa chỉ (ví dụ `localhost:9092` từ tro
 | Triệu chứng | Nguyên nhân hay gặp | Cách xử lý |
 |---|---|---|
 | `Cannot connect to the Docker daemon` | Docker Desktop chưa chạy | Mở Docker Desktop, đợi biểu tượng báo running |
-| `make up` báo `Missing .env` | Chưa tạo `.env` | `cp .env.example .env` |
+| `make up` báo `Missing .env` | Chưa tạo `.env` trong folder TV1 | `cp .env.example .env` (trong folder TV1) |
 | `port is already allocated` | Port đang bị chiếm | Đổi `*_HOST_PORT` trong `.env` hoặc tắt tiến trình đang dùng port |
 | OpenSearch restart liên tục / exit 137 | Thiếu RAM | Tăng RAM cho Docker; giữ `OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m` |
 | OpenSearch log `max virtual memory areas vm.max_map_count [65530] is too low` | Linux host | `sudo sysctl -w vm.max_map_count=262144` |

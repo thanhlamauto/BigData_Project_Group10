@@ -9,9 +9,16 @@ Bạn chốt scope + kiến trúc, dựng "khung" repo để 4 người còn l�
 
 ## File bạn sở hữu
 
+Tất cả nằm trong folder này, trừ `.gitignore`, `README.md` gốc và `.github/` (GitHub bắt buộc ở gốc repo). Chạy `make` trong folder này.
+
 ```text
+# ở gốc repo
 README.md
 .gitignore
+.github/workflows/ci.yaml
+.github/pull_request_template.md
+
+# trong folder này
 .env.example
 Makefile
 pyproject.toml (hoặc requirements/*.txt — pin version)
@@ -21,8 +28,7 @@ docs/adr/0001-kappa-stack.md
 docs/runbook.md
 docs/milestone_1_evidence.md
 deploy/k8s/README.md       # chỉ roadmap, không hứa production
-.github/workflows/ci.yaml
-.github/pull_request_template.md
+tests/unit/
 ```
 
 ## Làm song song thế nào

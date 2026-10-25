@@ -1,5 +1,5 @@
 # StreamRAG — local development stack (Milestone 1).
-# Run from the repo root via the Makefile (`make up`), which passes `--env-file .env`.
+# Run via the Makefile in the TV1 folder (`make up`), which passes `--env-file .env`.
 # Application services (spark job, indexer, api) are added by their owners in M1.2.
 
 name: streamrag

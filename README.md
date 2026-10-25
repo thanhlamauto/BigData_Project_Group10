@@ -9,14 +9,17 @@ Big Data project (Group 10). Kappa architecture:
 
 Yêu cầu: Docker (Compose v2), `make`, Docker được cấp ≥ 2 GB RAM cho hạ tầng nền (≥ 6 GB khi chạy full stack).
 
+Hạ tầng, CI config và tài liệu kiến trúc nằm trong folder của TV1: [`members/TV1-Pham-Chi-Bang-lead-architecture-devops/`](members/TV1-Pham-Chi-Bang-lead-architecture-devops/).
+
 ```bash
+cd members/TV1-Pham-Chi-Bang-lead-architecture-devops
 cp .env.example .env
 make up      # Kafka :9092 · MinIO :9000 (console :9001) · OpenSearch :9200; tạo bucket streamrag-lake
 make ps
 make down    # giữ dữ liệu; `make reset` mới xóa volumes
 ```
 
-`make help` liệt kê mọi lệnh. Các lệnh `init-topics`, `init-index`, `seed`, `simulate`, `smoke` hiện báo *not implemented* cho đến khi owner của chúng merge code. Vận hành và lỗi thường gặp: [docs/runbook.md](docs/runbook.md). Kiến trúc: [docs/architecture.md](docs/architecture.md).
+`make help` liệt kê mọi lệnh. Các lệnh `init-topics`, `init-index`, `seed`, `simulate`, `smoke` hiện báo *not implemented* cho đến khi owner của chúng merge code. Vận hành và lỗi thường gặp: [runbook](members/TV1-Pham-Chi-Bang-lead-architecture-devops/docs/runbook.md). Kiến trúc: [architecture](members/TV1-Pham-Chi-Bang-lead-architecture-devops/docs/architecture.md).
 
 ## Bắt đầu từ đâu
 
