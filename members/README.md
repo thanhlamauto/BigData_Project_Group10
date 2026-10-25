@@ -7,11 +7,11 @@
 
 | Thành viên | Folder chỉ dẫn | Vai trò | Task trong plan | Reviewer chéo |
 |---|---|---|---|---|
-| **TV1** — Pham Chi Bang | [Pham-Chi-Bang](Pham-Chi-Bang/README.md) | Lead, Architecture, DevOps, Integration | M1-01 → M1-04 | TV3 (Nguyen Phu An) |
-| **TV2** — Nguyen Thanh Lam | [Nguyen-Thanh-Lam](Nguyen-Thanh-Lam/README.md) | Data contract, dataset, Kafka producer | M1-05 → M1-07 | TV3 (Nguyen Phu An) |
-| **TV3** — Nguyen Phu An | [Nguyen-Phu-An](Nguyen-Phu-An/README.md) | PySpark Structured Streaming, MinIO/Parquet | M1-08 → M1-10 | TV2 (Nguyen Thanh Lam) |
-| **TV4** — Kieu Son Tung | [Kieu-Son-Tung](Kieu-Son-Tung/README.md) | OpenSearch, embedding, indexer | M1-11 → M1-13 | TV5 (Nguyen Ngoc Minh) |
-| **TV5** — Nguyen Ngoc Minh | [Nguyen-Ngoc-Minh](Nguyen-Ngoc-Minh/README.md) | FastAPI `/ask`, LLM, smoke test | M1-14 → M1-16 | TV4 (Kieu Son Tung) |
+| **TV1** — Pham Chi Bang | [TV1-Pham-Chi-Bang-lead-architecture-devops](TV1-Pham-Chi-Bang-lead-architecture-devops/README.md) | Lead, Architecture, DevOps, Integration | M1-01 → M1-04 | TV3 (Nguyen Phu An) |
+| **TV2** — Nguyen Thanh Lam | [TV2-Nguyen-Thanh-Lam-data-kafka-ingestion](TV2-Nguyen-Thanh-Lam-data-kafka-ingestion/README.md) | Data contract, dataset, Kafka producer | M1-05 → M1-07 | TV3 (Nguyen Phu An) |
+| **TV3** — Nguyen Phu An | [TV3-Nguyen-Phu-An-spark-datalake](TV3-Nguyen-Phu-An-spark-datalake/README.md) | PySpark Structured Streaming, MinIO/Parquet | M1-08 → M1-10 | TV2 (Nguyen Thanh Lam) |
+| **TV4** — Kieu Son Tung | [TV4-Kieu-Son-Tung-opensearch-indexer](TV4-Kieu-Son-Tung-opensearch-indexer/README.md) | OpenSearch, embedding, indexer | M1-11 → M1-13 | TV5 (Nguyen Ngoc Minh) |
+| **TV5** — Nguyen Ngoc Minh | [TV5-Nguyen-Ngoc-Minh-rag-api-llm-tests](TV5-Nguyen-Ngoc-Minh-rag-api-llm-tests/README.md) | FastAPI `/ask`, LLM, smoke test | M1-14 → M1-16 | TV4 (Kieu Son Tung) |
 
 M1-17 (cross-review, chạy thử trên máy khác, rehearsal) là việc của **cả nhóm** ở M1.4.
 
