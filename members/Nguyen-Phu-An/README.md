@@ -1,6 +1,6 @@
 # TV3 — Spark Structured Streaming & Data Lake
 
-> Người phụ trách: _(tên / @github)_ · Reviewer chéo của bạn: **TV2** · Bạn review: PR của **TV2** và PR hạ tầng của **TV1**
+> Người phụ trách: **Nguyen Phu An** (TV3) · Reviewer chéo của bạn: **TV2 (Nguyen Thanh Lam)** · Bạn review: PR của **TV2 (Nguyen Thanh Lam)** và PR hạ tầng của **TV1 (Pham Chi Bang)**
 > Đọc trước: [plan](../../StreamRAG_Milestone_1_Plan.md) mục 1.3, 2.2, 3.2, **3.3**, 6, 11 (rủi ro Spark S3A) và [members/README.md](../README.md).
 
 ## Vai trò

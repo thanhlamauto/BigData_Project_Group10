@@ -1,6 +1,6 @@
 # TV2 — Data & Kafka Ingestion
 
-> Người phụ trách: _(tên / @github)_ · Reviewer chéo của bạn: **TV3** · Bạn review: PR của **TV3**
+> Người phụ trách: **Nguyen Thanh Lam** (TV2) · Reviewer chéo của bạn: **TV3 (Nguyen Phu An)** · Bạn review: PR của **TV3 (Nguyen Phu An)**
 > Đọc trước: [plan](../../StreamRAG_Milestone_1_Plan.md) mục 2.1, **3 (Data plan)**, 6, 8B và [members/README.md](../README.md).
 
 ## Vai trò

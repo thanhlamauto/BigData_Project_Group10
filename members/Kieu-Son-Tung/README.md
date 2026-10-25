@@ -1,6 +1,6 @@
 # TV4 — Vector/NoSQL Store & Indexing
 
-> Người phụ trách: _(tên / @github)_ · Reviewer chéo của bạn: **TV5** · Bạn review: PR của **TV5**
+> Người phụ trách: **Kieu Son Tung** (TV4) · Reviewer chéo của bạn: **TV5 (Nguyen Ngoc Minh)** · Bạn review: PR của **TV5 (Nguyen Ngoc Minh)**
 > Đọc trước: [plan](../../StreamRAG_Milestone_1_Plan.md) mục 2.2, 2.3, 3.2, 3.3, 6, 8D và [members/README.md](../README.md).
 
 ## Vai trò

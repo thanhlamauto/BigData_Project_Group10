@@ -10,11 +10,11 @@ Big Data project (Group 10). Kappa architecture:
 1. Đọc kế hoạch Milestone 1: [StreamRAG_Milestone_1_Plan.md](StreamRAG_Milestone_1_Plan.md)
 2. Xem bảng phân công: [members/README.md](members/README.md)
 3. Mở folder của bạn và làm theo chỉ dẫn:
-   - [TV1 — Lead / Architecture / DevOps](members/TV1-lead-architecture-devops/README.md)
-   - [TV2 — Data & Kafka ingestion](members/TV2-data-kafka-ingestion/README.md)
-   - [TV3 — Spark & Data Lake](members/TV3-spark-datalake/README.md)
-   - [TV4 — OpenSearch & Indexer](members/TV4-opensearch-indexer/README.md)
-   - [TV5 — RAG API / LLM / Tests](members/TV5-rag-api-llm-tests/README.md)
+   - [TV1 Pham Chi Bang — Lead / Architecture / DevOps](members/Pham-Chi-Bang/README.md)
+   - [TV2 Nguyen Thanh Lam — Data & Kafka ingestion](members/Nguyen-Thanh-Lam/README.md)
+   - [TV3 Nguyen Phu An — Spark & Data Lake](members/Nguyen-Phu-An/README.md)
+   - [TV4 Kieu Son Tung — OpenSearch & Indexer](members/Kieu-Son-Tung/README.md)
+   - [TV5 Nguyen Ngoc Minh — RAG API / LLM / Tests](members/Nguyen-Ngoc-Minh/README.md)
 
 ## Các mốc của Milestone 1
 

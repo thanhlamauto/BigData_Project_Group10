@@ -1,6 +1,6 @@
 # TV5 — RAG API / LLM / Tests
 
-> Người phụ trách: _(tên / @github)_ · Reviewer chéo của bạn: **TV4** · Bạn review: PR của **TV4**
+> Người phụ trách: **Nguyen Ngoc Minh** (TV5) · Reviewer chéo của bạn: **TV4 (Kieu Son Tung)** · Bạn review: PR của **TV4 (Kieu Son Tung)**
 > Đọc trước: [plan](../../StreamRAG_Milestone_1_Plan.md) mục 1.2 (chú ý về LLM mock), 2.2, 6, **8D–8E**, **9**, 12 và [members/README.md](../README.md).
 
 ## Vai trò

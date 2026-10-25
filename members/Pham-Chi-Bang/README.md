@@ -1,6 +1,6 @@
 # TV1 — Lead / Architecture / DevOps / Integration
 
-> Người phụ trách: _(tên / @github)_ · Reviewer chéo của bạn: **TV3** · Bạn review: PR hạ tầng/tích hợp của mọi người
+> Người phụ trách: **Pham Chi Bang** (TV1) · Reviewer chéo của bạn: **TV3 (Nguyen Phu An)** · Bạn review: PR hạ tầng/tích hợp của mọi người
 > Đọc trước: [plan](../../StreamRAG_Milestone_1_Plan.md) mục 1, 2, 4, 7, 8, 9, 10 và [members/README.md](../README.md).
 
 ## Vai trò
@@ -36,7 +36,7 @@ deploy/k8s/README.md       # chỉ roadmap, không hứa production
 ## M1.1 — Nền móng (D1–D3, 26–28/10) · task M1-01, M1-02, M1-03
 
 **D1 — Kickoff 45 phút**
-- [ ] Điền tên + GitHub username vào [members/README.md](../README.md); mời 4 người làm collaborator.
+- [ ] Điền GitHub username của từng người vào [members/README.md](../README.md); mời 4 người làm collaborator.
 - [ ] Hỏi từng người: máy có Docker không, bao nhiêu RAM. Máy 8 GB → cần profile `lite`.
 - [ ] Chốt LLM provider chính (Ollama local hay API OpenAI-compatible) + mock cho test.
 - [ ] Tạo Issues M1-01 → M1-17 (gắn label mốc `M1.1`…`M1.4`) và GitHub Project board.

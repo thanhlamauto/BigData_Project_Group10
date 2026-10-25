@@ -7,11 +7,11 @@
 
 | Thành viên | Folder chỉ dẫn | Vai trò | Task trong plan | Reviewer chéo |
 |---|---|---|---|---|
-| **TV1** — _(tên / @github)_ | [TV1-lead-architecture-devops](TV1-lead-architecture-devops/README.md) | Lead, Architecture, DevOps, Integration | M1-01 → M1-04 | TV3 |
-| **TV2** — _(tên / @github)_ | [TV2-data-kafka-ingestion](TV2-data-kafka-ingestion/README.md) | Data contract, dataset, Kafka producer | M1-05 → M1-07 | TV3 |
-| **TV3** — _(tên / @github)_ | [TV3-spark-datalake](TV3-spark-datalake/README.md) | PySpark Structured Streaming, MinIO/Parquet | M1-08 → M1-10 | TV2 |
-| **TV4** — _(tên / @github)_ | [TV4-opensearch-indexer](TV4-opensearch-indexer/README.md) | OpenSearch, embedding, indexer | M1-11 → M1-13 | TV5 |
-| **TV5** — _(tên / @github)_ | [TV5-rag-api-llm-tests](TV5-rag-api-llm-tests/README.md) | FastAPI `/ask`, LLM, smoke test | M1-14 → M1-16 | TV4 |
+| **TV1** — Pham Chi Bang | [Pham-Chi-Bang](Pham-Chi-Bang/README.md) | Lead, Architecture, DevOps, Integration | M1-01 → M1-04 | TV3 (Nguyen Phu An) |
+| **TV2** — Nguyen Thanh Lam | [Nguyen-Thanh-Lam](Nguyen-Thanh-Lam/README.md) | Data contract, dataset, Kafka producer | M1-05 → M1-07 | TV3 (Nguyen Phu An) |
+| **TV3** — Nguyen Phu An | [Nguyen-Phu-An](Nguyen-Phu-An/README.md) | PySpark Structured Streaming, MinIO/Parquet | M1-08 → M1-10 | TV2 (Nguyen Thanh Lam) |
+| **TV4** — Kieu Son Tung | [Kieu-Son-Tung](Kieu-Son-Tung/README.md) | OpenSearch, embedding, indexer | M1-11 → M1-13 | TV5 (Nguyen Ngoc Minh) |
+| **TV5** — Nguyen Ngoc Minh | [Nguyen-Ngoc-Minh](Nguyen-Ngoc-Minh/README.md) | FastAPI `/ask`, LLM, smoke test | M1-14 → M1-16 | TV4 (Kieu Son Tung) |
 
 M1-17 (cross-review, chạy thử trên máy khác, rehearsal) là việc của **cả nhóm** ở M1.4.
 
@@ -28,7 +28,7 @@ M1-17 (cross-review, chạy thử trên máy khác, rehearsal) là việc của 
 
 **Nguyên tắc: trong M1.1 và M1.2, không ai phụ thuộc vào *service đang chạy* của người khác — chỉ phụ thuộc vào *file trong repo* (contract, fixtures, mapping).** Mỗi người tự dựng mock/stub cho phần đầu vào của mình. Chỉ từ M1.3 mới ghép service thật.
 
-| | TV1 | TV2 | TV3 | TV4 | TV5 |
+| | TV1 | TV2 | TV3 | TV4 | TV5 (Nguyen Ngoc Minh) |
 |---|---|---|---|---|---|
 | **M1.1** | ADR, architecture, Compose tối thiểu, CI, repo rules | JSON Schema + 10 fixtures (**sáng D2**), generator | Spike Spark→Parquet local trên fixture file, skeleton job | Mapping, `Embedder`, index fixture vào OpenSearch container riêng | FastAPI skeleton, `/health`, `/ask` với **FakeRetriever + mock LLM** |
 | **Đầu vào dùng tạm** | — | — | Message mẫu ở mục 3.2 plan → fixture của TV2 | Message mẫu mục 3.2 → fixture TV2 | Message mẫu mục 3.2 → fixture TV2 |
@@ -43,8 +43,8 @@ M1-17 (cross-review, chạy thử trên máy khác, rehearsal) là việc của 
 |---|---|---|---|
 | **Sáng D2 (27/10)** | TV2 | `data/contracts/event.schema.json`, `data/sample/fixtures.jsonl` (10 records) | TV3, TV4, TV5 |
 | **Hết D2** | TV1 | `infra/compose.yaml` tối thiểu (Kafka, MinIO, OpenSearch) + `.env.example` | Tất cả |
-| **Hết D3** | TV4 | `infra/opensearch/index_mapping.json`, `init_index.py`, `services/indexer/embedding.py` | TV5 |
-| **Hết D5** | TV3 | `data/sample/cleaned_fixtures.jsonl` (output Spark mẫu) | TV4 |
+| **Hết D3** | TV4 | `infra/opensearch/index_mapping.json`, `init_index.py`, `services/indexer/embedding.py` | TV5 (Nguyen Ngoc Minh) |
+| **Hết D5** | TV3 | `data/sample/cleaned_fixtures.jsonl` (output Spark mẫu) | TV4 (Kieu Son Tung) |
 | **Hết D8** | Tất cả | **Freeze v1** schema/API | Tất cả |
 
 Trước khi có file thật (D1), mọi người code theo **message mẫu ở mục 3.2 của plan** — đó đã là contract v0.
