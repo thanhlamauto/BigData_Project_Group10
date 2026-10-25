@@ -31,18 +31,20 @@ tests/unit/test_transforms.py
 
 ## M1.1 — Nền móng (D1–D3, 26–28/10) · task M1-08
 
-- [ ] `schema.py`: `StructType` theo contract (dùng message mẫu mục 3.2 plan, cập nhật khi TV2 merge schema sáng D2).
-- [ ] `transforms.py` (hàm nhận/trả DataFrame, không phụ thuộc Kafka):
+- [x] `schema.py`: `StructType` theo contract (dùng message mẫu mục 3.2 plan, cập nhật khi TV2 merge schema sáng D2).
+- [x] `transforms.py` (hàm nhận/trả DataFrame, không phụ thuộc Kafka):
   - parse JSON, tách bản ghi lỗi/thiếu field bắt buộc;
   - trim + gộp khoảng trắng `title`/`body`, bỏ `body` rỗng;
   - parse `event_time`/`ingested_at` về timestamp UTC, thêm `processed_at`, `ingest_date`.
-- [ ] Unit test transforms với local SparkSession.
-- [ ] **Spike rủi ro số 1 (bắt đầu D3)**: job tối thiểu đọc Kafka → ghi Parquet. Pin version tương thích và ghi vào README module, ví dụ Spark 3.5.x (Scala 2.12):
+- [x] Unit test transforms với local SparkSession.
+- [x] **Spike rủi ro số 1 (bắt đầu D3)**: job tối thiểu đọc Kafka → ghi Parquet. Pin version tương thích và ghi vào README module, ví dụ Spark 3.5.x (Scala 2.12):
   - `org.apache.spark:spark-sql-kafka-0-10_2.12:<đúng bản Spark>`
   - `org.apache.hadoop:hadoop-aws:<đúng bản Hadoop đi kèm Spark>` + `aws-java-sdk-bundle` tương ứng
   - **Kiểm tra lại version thực tế** trong image bạn dùng — đừng copy mù.
 
 **Bàn giao cuối M1.1:** transforms + unit test merge; spike Kafka → Parquet chạy (local path cũng được).
+
+> Trạng thái 25/10: code + test + spike Kafka → MinIO (S3A) đã chạy, chờ PR. Schema đang theo contract v0 (mục 3.2), cập nhật khi TV2 merge schema. Chi tiết: [services/stream_processor/README.md](services/stream_processor/README.md).
 
 ---
 
