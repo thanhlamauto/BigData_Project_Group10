@@ -1,0 +1,66 @@
+{
+  "started_at": "2026-10-25T17:20:08.475236Z",
+  "bootstrap_servers": "localhost:9092",
+  "topic": "streamrag.raw.v1",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "topic_initialization",
+      "idempotent": true,
+      "raw_partitions": 3,
+      "cleaned_partitions": 3
+    },
+    {
+      "name": "seed",
+      "acknowledged": 400,
+      "consumed": 400,
+      "key_equals_document_id": true
+    },
+    {
+      "name": "live_file",
+      "acknowledged": 10,
+      "consumed": 10,
+      "key_equals_document_id": true
+    },
+    {
+      "name": "atlas_update",
+      "acknowledged": 1,
+      "consumed": 1,
+      "key_equals_document_id": true
+    },
+    {
+      "name": "seed_replay",
+      "acknowledged": 10,
+      "consumed": 10,
+      "key_equals_document_id": true
+    },
+    {
+      "name": "edge_cases",
+      "acknowledged": 26,
+      "consumed": 26,
+      "wire_bytes_unchanged": true,
+      "atlas_versions": [
+        1,
+        2,
+        1
+      ]
+    }
+  ],
+  "starting_offsets": {
+    "0": 0,
+    "1": 0,
+    "2": 0
+  },
+  "atlas": {
+    "document_id": "inc-atlas-001",
+    "seed_version": 1,
+    "live_version": 2,
+    "before": "20:30 UTC",
+    "after": "21:30 UTC",
+    "partition": 0,
+    "seed_offset": 0,
+    "live_offset": 150
+  },
+  "finished_at": "2026-10-25T17:20:11.634513Z",
+  "scope": "Real Kafka ingestion only; Spark/Indexer/API behavior is not verified."
+}

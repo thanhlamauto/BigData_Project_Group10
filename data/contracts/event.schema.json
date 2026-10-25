@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StreamRAG status event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "event_id", "document_id", "version", "operation", "source", "title", "body", "category", "event_time", "ingested_at"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "event_id": {"$ref": "#/$defs/nonblank"},
+    "document_id": {"$ref": "#/$defs/nonblank"},
+    "version": {"type": "integer", "minimum": 1},
+    "operation": {"type": "string", "enum": ["upsert"]},
+    "source": {"$ref": "#/$defs/nonblank"},
+    "source_url": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/nonblank"}]},
+    "title": {"$ref": "#/$defs/nonblank"},
+    "body": {"$ref": "#/$defs/nonblank"},
+    "category": {"type": "string", "enum": ["incident", "maintenance", "resolved", "status"]},
+    "event_time": {"$ref": "#/$defs/utcTimestamp"},
+    "ingested_at": {"$ref": "#/$defs/utcTimestamp"}
+  },
+  "$defs": {
+    "nonblank": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "utcTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+    }
+  }
+}
