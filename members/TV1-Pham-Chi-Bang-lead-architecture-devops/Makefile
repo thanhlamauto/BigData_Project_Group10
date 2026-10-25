@@ -7,10 +7,13 @@ PYTHON  ?= python3
 ENV_FILE ?= .env
 COMPOSE := docker compose --env-file $(ENV_FILE) -f infra/compose.yaml
 # lint/test cover the whole repository so other members' code is checked too.
-REPO_ROOT  := $(shell git rev-parse --show-toplevel)
+REPO_ROOT  := $(abspath ../..)
 RUFF       := $(PYTHON) -m ruff
 RUFF_CFG   := --config $(CURDIR)/pyproject.toml
 TEST_PATHS  = $(patsubst $(REPO_ROOT)/%,%,$(wildcard $(REPO_ROOT)/tests $(REPO_ROOT)/members/*/tests))
+INGEST_ARGS ?=
+# Use the same environment as Compose; command-line arguments can override defaults.
+INGEST_ENV = set -a; . <(sed 's/\r$$//' "$(ENV_FILE)"); set +a;
 
 define not_implemented
 	@echo "make $@: not implemented yet (owner: $(1))" >&2; exit 1
@@ -53,19 +56,19 @@ init: init-bucket init-topics init-index ## Create bucket, Kafka topics and Open
 init-bucket: check-env ## Create the data lake bucket (idempotent)
 	$(COMPOSE) run --rm minio-init
 
-init-topics: ## Create Kafka topics (owner: TV2)
-	$(call not_implemented,TV2 Nguyen Thanh Lam)
+init-topics: check-env ## Create Kafka topics (owner: TV2)
+	$(INGEST_ENV) cd $(REPO_ROOT) && $(PYTHON) infra/kafka/init_topics.py $(INGEST_ARGS)
 
 init-index: ## Create the OpenSearch index (owner: TV4)
 	$(call not_implemented,TV4 Kieu Son Tung)
 
 # --- Data ----------------------------------------------------------------------
 
-seed: ## Publish seed events to the raw topic (owner: TV2)
-	$(call not_implemented,TV2 Nguyen Thanh Lam)
+seed: check-env ## Publish seed events to the raw topic (owner: TV2)
+	$(INGEST_ENV) cd $(REPO_ROOT) && $(PYTHON) -m services.producer.cli $(INGEST_ARGS)
 
-simulate: ## Stream live events / updates (owner: TV2)
-	$(call not_implemented,TV2 Nguyen Thanh Lam)
+simulate: check-env ## Stream live events / updates (owner: TV2)
+	$(INGEST_ENV) cd $(REPO_ROOT) && $(PYTHON) scripts/stream_simulator.py $(INGEST_ARGS)
 
 # --- Quality -------------------------------------------------------------------
 

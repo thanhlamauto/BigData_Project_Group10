@@ -94,9 +94,26 @@ make -C members/TV2-Nguyen-Thanh-Lam-data-kafka-ingestion test
 ```
 
 Set `PYTHON` to your virtual environment interpreter if needed. On Windows without
-Make, use the equivalent Python commands above. TV1's existing Makefile still
-contains its placeholders: TV1 can delegate those targets to these commands during
-integration. This contribution changes TV2-owned paths and leaves TV1's files intact.
+Make, use the equivalent Python commands above. The shared TV1 Makefile now also
+provides `init-topics`, `seed`, and `simulate`:
+
+```bash
+cd members/TV1-Pham-Chi-Bang-lead-architecture-devops
+make ENV_FILE=.env.example init-topics seed
+make ENV_FILE=.env.example simulate INGEST_ARGS="--update inc-atlas-001"
+```
+
+Install producer requirements in the selected `PYTHON` interpreter first. Shared
+targets export the selected environment file, including custom broker/topic values,
+and accept `INGEST_ARGS` for CLI overrides. CRLF environment files are supported.
+When calling a Windows Python executable from WSL, also export
+`WSLENV=RAW_TOPIC:CLEANED_TOPIC:KAFKA_BOOTSTRAP_SERVERS` so these variables cross
+the WSL/Windows boundary. A native Linux Python interpreter needs no such bridge.
+
+The shared targets and continuous Kafka → Spark ingestion were exercised with
+400 seed events, 10 live events and 26 edge cases. See the
+[Spark integration evidence](evidence/spark-2026-10-26.md) for counts, rejected
+records, reproduction commands and remaining downstream limitations.
 
 ## Delivery behavior and limits
 
