@@ -9,8 +9,9 @@ Dataset: [data/README.md](../../data/README.md).
 Đã bổ sung schema, generator deterministic, 400 seed events, 10 fixtures, 20 Q&A,
 10 live events, 26 edge cases, topic initializer, producer, simulator và unit tests.
 Makefile trong folder TV2 cung cấp `init-topics`, `seed`, `simulate`, `generate`, `test`.
-Kiểm chứng publish/consume với broker thật và luồng Spark → Indexer → API cần chạy
-theo hướng dẫn module; test offline không thay thế bước tích hợp đó.
+Đã xác nhận publish/consume **447 records với Kafka 3.9.1 thật** ngày 26/10/2026:
+[evidence](../../services/producer/evidence/README.md). Luồng Spark → Indexer → API
+vẫn cần kiểm thử tích hợp cùng các owner; kiểm tra Kafka không thay thế bước đó.
 
 > Người phụ trách: **Nguyen Thanh Lam** (TV2) · Reviewer chéo của bạn: **TV3 (Nguyen Phu An)** · Bạn review: PR của **TV3 (Nguyen Phu An)**
 > Đọc trước: [plan](../../StreamRAG_Milestone_1_Plan.md) mục 2.1, **3 (Data plan)**, 6, 8B và [members/README.md](../README.md).

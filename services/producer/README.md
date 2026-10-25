@@ -33,6 +33,29 @@ The topic initializer creates `streamrag.raw.v1` and `streamrag.cleaned.v1` with
 3 partitions and replication factor 1. Running it again accepts existing topics;
 it does not alter their configuration. A broker error returns nonzero.
 
+Real-broker verification (publishes 447 fixture records; use a development broker):
+
+```bash
+python -m services.producer.verify_kafka --report data/generated/kafka-verification.json
+```
+
+This checks delivery acknowledgements, consumed counts, keys, payloads, timestamps,
+per-document ordering and exact edge-case bytes. Existing records are skipped by
+snapshotting end offsets. [Verification evidence](evidence/README.md) records a
+successful run on 26/10/2026. Downstream Spark/Indexer/API behavior needs its own test.
+
+On this Windows machine Docker Engine runs inside Ubuntu WSL2. From PowerShell,
+prefix Docker commands with `wsl -d Ubuntu-22.04 -u root --`, for example:
+
+```powershell
+wsl -d Ubuntu-22.04 -u root -- docker ps
+wsl -d Ubuntu-22.04 -u root -- service docker start
+```
+
+The second command starts the daemon again after a WSL shutdown. Python ingestion
+can run on Windows using `localhost:9092`; run Compose commands inside WSL from the
+repository's `/mnt/c/...` path.
+
 Inspect actual keys and values with the Kafka CLI inside the running container:
 
 ```bash
