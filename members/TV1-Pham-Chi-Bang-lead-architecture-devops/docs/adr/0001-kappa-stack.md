@@ -2,7 +2,7 @@
 
 - **Trạng thái:** Proposed (chờ cả nhóm chốt tại Gate A, 27/10/2026)
 - **Người đề xuất:** TV1 (Pham Chi Bang)
-- **Liên quan:** [architecture.md](../architecture.md), [Plan M1](../../StreamRAG_Milestone_1_Plan.md) mục 1.3, 2.3
+- **Liên quan:** [architecture.md](../architecture.md), [Plan M1](../../../../StreamRAG_Milestone_1_Plan.md) mục 1.3, 2.3
 
 ## Context
 

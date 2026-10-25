@@ -83,7 +83,7 @@ tests/unit/test_upsert.py, test_embedding.py
 - [ ] Retry có giới hạn + backoff khi OpenSearch tạm lỗi; message không parse được → log + bỏ qua (dead-letter topic để milestone sau).
 - [ ] Kill indexer giữa chừng rồi chạy lại → không duplicate (nhờ `_id = document_id`).
 - [ ] Bộ edge case của TV2 → không duplicate searchable, late version không ghi đè.
-- [ ] Runbook (gửi TV1 đưa vào `docs/runbook.md`): xóa + tạo lại index, **replay** từ Kafka (reset offset consumer group), lỗi thường gặp (sai dimension, thiếu RAM).
+- [ ] Runbook (gửi TV1 đưa vào `members/TV1-Pham-Chi-Bang-lead-architecture-devops/docs/runbook.md`): xóa + tạo lại index, **replay** từ Kafka (reset offset consumer group), lỗi thường gặp (sai dimension, thiếu RAM).
 - [ ] Cross-review + clean clone (M1-17).
 
 ## Definition of Done của bạn

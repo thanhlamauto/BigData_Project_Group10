@@ -42,7 +42,7 @@ M1-17 (cross-review, chạy thử trên máy khác, rehearsal) là việc của 
 | Hạn | Ai giao | File | Ai dùng |
 |---|---|---|---|
 | **Sáng D2 (27/10)** | TV2 | `data/contracts/event.schema.json`, `data/sample/fixtures.jsonl` (10 records) | TV3, TV4, TV5 |
-| **Hết D2** | TV1 | `infra/compose.yaml` tối thiểu (Kafka, MinIO, OpenSearch) + `.env.example` | Tất cả |
+| **Hết D2** | TV1 | `infra/compose.yaml` tối thiểu (Kafka, MinIO, OpenSearch) + `.env.example` — nằm trong folder TV1 | Tất cả |
 | **Hết D3** | TV4 | `infra/opensearch/index_mapping.json`, `init_index.py`, `services/indexer/embedding.py` | TV5 (Nguyen Ngoc Minh) |
 | **Hết D5** | TV3 | `data/sample/cleaned_fixtures.jsonl` (output Spark mẫu) | TV4 (Kieu Son Tung) |
 | **Hết D8** | Tất cả | **Freeze v1** schema/API | Tất cả |

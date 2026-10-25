@@ -1,10 +1,16 @@
 # StreamRAG — developer commands (Milestone 1).
+# Run from this folder:  cd members/TV1-Pham-Chi-Bang-lead-architecture-devops && make <target>
 # Targets owned by other members print "not implemented yet" and exit 1 until their owner fills them in.
 
 SHELL   := /bin/bash
 PYTHON  ?= python3
 ENV_FILE ?= .env
 COMPOSE := docker compose --env-file $(ENV_FILE) -f infra/compose.yaml
+# lint/test cover the whole repository so other members' code is checked too.
+REPO_ROOT  := $(shell git rev-parse --show-toplevel)
+RUFF       := $(PYTHON) -m ruff
+RUFF_CFG   := --config $(CURDIR)/pyproject.toml
+TEST_PATHS  = $(patsubst $(REPO_ROOT)/%,%,$(wildcard $(REPO_ROOT)/tests $(REPO_ROOT)/members/*/tests))
 
 define not_implemented
 	@echo "make $@: not implemented yet (owner: $(1))" >&2; exit 1
@@ -66,16 +72,16 @@ simulate: ## Stream live events / updates (owner: TV2)
 install-dev: ## Install lint/test tools
 	$(PYTHON) -m pip install -r requirements/dev.txt
 
-lint: ## Lint and check formatting
-	$(PYTHON) -m ruff check .
-	$(PYTHON) -m ruff format --check .
+lint: ## Lint and check formatting (whole repo)
+	cd $(REPO_ROOT) && $(RUFF) check $(RUFF_CFG) .
+	cd $(REPO_ROOT) && $(RUFF) format $(RUFF_CFG) --check .
 
-format: ## Auto-format code
-	$(PYTHON) -m ruff format .
-	$(PYTHON) -m ruff check --fix .
+format: ## Auto-format code (whole repo)
+	cd $(REPO_ROOT) && $(RUFF) format $(RUFF_CFG) .
+	cd $(REPO_ROOT) && $(RUFF) check $(RUFF_CFG) --fix .
 
-test: ## Run unit tests
-	$(PYTHON) -m pytest tests/unit
+test: ## Run unit tests (whole repo)
+	cd $(REPO_ROOT) && $(PYTHON) -m pytest -c $(CURDIR)/pyproject.toml --rootdir . $(TEST_PATHS)
 
 smoke: ## End-to-end PASS/FAIL check (owner: TV5)
 	$(call not_implemented,TV5 Nguyen Ngoc Minh)
