@@ -1,0 +1,3 @@
+# Keep deterministic fixture bytes identical in Windows and Linux checkouts.
+sample/*.jsonl text eol=lf
+sample/*.json text eol=lf

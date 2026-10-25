@@ -1,5 +1,17 @@
 # TV2 — Data & Kafka Ingestion
 
+## Implementation — M1-05 / M1-06 / M1-07
+
+Code và hướng dẫn chạy: [services/producer/README.md](../../services/producer/README.md).
+Contract: [docs/data_contract.md](../../docs/data_contract.md).
+Dataset: [data/README.md](../../data/README.md).
+
+Đã bổ sung schema, generator deterministic, 400 seed events, 10 fixtures, 20 Q&A,
+10 live events, 26 edge cases, topic initializer, producer, simulator và unit tests.
+Makefile trong folder TV2 cung cấp `init-topics`, `seed`, `simulate`, `generate`, `test`.
+Kiểm chứng publish/consume với broker thật và luồng Spark → Indexer → API cần chạy
+theo hướng dẫn module; test offline không thay thế bước tích hợp đó.
+
 > Người phụ trách: **Nguyen Thanh Lam** (TV2) · Reviewer chéo của bạn: **TV3 (Nguyen Phu An)** · Bạn review: PR của **TV3 (Nguyen Phu An)**
 > Đọc trước: [plan](../../StreamRAG_Milestone_1_Plan.md) mục 2.1, **3 (Data plan)**, 6, 8B và [members/README.md](../README.md).
 

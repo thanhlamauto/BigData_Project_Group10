@@ -1,0 +1,132 @@
+[
+  {
+    "line": 1,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 2,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 3,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 4,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 5,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 6,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 7,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 8,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 9,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 10,
+    "kind": "duplicate",
+    "expected": "Same event_id as seed; no additional searchable document."
+  },
+  {
+    "line": 11,
+    "kind": "late",
+    "expected": "Valid late event; watermark policy belongs to Spark; log outcome."
+  },
+  {
+    "line": 12,
+    "kind": "late",
+    "expected": "Valid late event; watermark policy belongs to Spark; log outcome."
+  },
+  {
+    "line": 13,
+    "kind": "late",
+    "expected": "Valid late event; watermark policy belongs to Spark; log outcome."
+  },
+  {
+    "line": 14,
+    "kind": "late",
+    "expected": "Valid late event; watermark policy belongs to Spark; log outcome."
+  },
+  {
+    "line": 15,
+    "kind": "late",
+    "expected": "Valid late event; watermark policy belongs to Spark; log outcome."
+  },
+  {
+    "line": 16,
+    "kind": "update",
+    "expected": "Version 2 replaces seed version 1."
+  },
+  {
+    "line": 17,
+    "kind": "update",
+    "expected": "Version 2 replaces seed version 1."
+  },
+  {
+    "line": 18,
+    "kind": "update",
+    "expected": "Version 2 replaces seed version 1."
+  },
+  {
+    "line": 19,
+    "kind": "update",
+    "expected": "Version 2 replaces seed version 1."
+  },
+  {
+    "line": 20,
+    "kind": "update",
+    "expected": "Version 2 replaces seed version 1."
+  },
+  {
+    "line": 21,
+    "kind": "stale",
+    "expected": "Version 1 arrives after version 2; never overwrite version 2."
+  },
+  {
+    "line": 22,
+    "kind": "invalid",
+    "expected": "Reject malformed JSON; count error."
+  },
+  {
+    "line": 23,
+    "kind": "invalid",
+    "expected": "Reject missing document_id; count error."
+  },
+  {
+    "line": 24,
+    "kind": "invalid",
+    "expected": "Reject whitespace-only body; count error."
+  },
+  {
+    "line": 25,
+    "kind": "invalid",
+    "expected": "Reject invalid timestamp; count error."
+  },
+  {
+    "line": 26,
+    "kind": "invalid",
+    "expected": "Reject version below 1; count error."
+  }
+]
